@@ -14,10 +14,14 @@ export const GameContainer = styled.div`
   text-align: center;
 `
 
+export const GameWrapper = styled.div`
+  padding: 0 40px;
+`
+
 export const GameTitle = styled.h1`
   color: ${WHITE};
   font-size: 40px;
-  margin-bottom: 40px;
+  margin: 0 0 40px 0;
 `
 
 export const GameGrid = styled.div`
@@ -26,4 +30,9 @@ export const GameGrid = styled.div`
   grid-gap: 40px;
   padding: 40px;
   margin-top: 40px;
+`
+
+export const GameTurns = styled.p`
+  font-size: 20px;
+  color: ${WHITE};
 `
