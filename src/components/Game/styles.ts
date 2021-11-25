@@ -3,11 +3,11 @@ import { PURPLE, WHITE } from '../../base/colours'
 
 export const Game = styled.div`
   background-color: ${PURPLE};
-  height: 100%;
+  min-height: 100vh;
 `
 
 export const GameContainer = styled.div`
-  max-width: 860px;
+  max-width: 1024px;
   height: 100%;
   padding: 40px 0;
   margin: 0 auto;
@@ -22,7 +22,8 @@ export const GameTitle = styled.h1`
 
 export const GameGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 40px;
+  padding: 40px;
   margin-top: 40px;
 `

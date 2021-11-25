@@ -1,14 +1,15 @@
-import React from 'react'
 import * as Styles from './styles'
 
 export interface cardProps {
   id?: number,
   src: string,
   alt: string,
-  handleChoice?: any
+  handleChoice?: any,
+  matched?: boolean
+  isFlipped?: boolean
 }
 
-export default function Card({ id, src, alt, handleChoice }: cardProps) {
+export default function Card({ id, src, alt, handleChoice, isFlipped }: cardProps) {
   const cardObject = { src, id }
 
   const handleClick = () => {
@@ -18,7 +19,7 @@ export default function Card({ id, src, alt, handleChoice }: cardProps) {
   return (
     <Styles.Card>
       <div>
-        <Styles.CardFrontImage src={src} alt={alt}  />
+        <Styles.CardFrontImage src={src} alt={alt} isFlipped={isFlipped} />
         <Styles.CardBackImage 
           src='img/cover.jpg' 
           alt='Cover image'

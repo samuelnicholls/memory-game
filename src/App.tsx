@@ -11,7 +11,7 @@ export default function App() {
       box-sizing: border-box;
     }
 
-    html, body, #root {
+    html, body {
       height: 100%;
       width: 100%;
     }
