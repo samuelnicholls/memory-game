@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as Styles from './styles'
 import Button from '../Button/index'
-import Card, { cardProps } from '../Card/index'
+import Card, { CardProps } from '../Card/index'
 
 const cardImages = [
   { "src": "img/london.jpg", "alt": "London", "matched": false},
@@ -13,10 +13,10 @@ const cardImages = [
 ]
 
 export default function Game() { 
-  const [cards, setCards] = useState<cardProps[]>([])
+  const [cards, setCards] = useState<CardProps[]>([])
   const [turns, setTurns] = useState<number>(0)
-  const [choiceOne, setChoiceOne] = useState<cardProps | null>(null)
-  const [choiceTwo, setChoiceTwo] = useState<cardProps | null>(null)
+  const [choiceOne, setChoiceOne] = useState<CardProps | null>(null)
+  const [choiceTwo, setChoiceTwo] = useState<CardProps | null>(null)
   const [disabled, setDisabled] = useState<boolean>(false)
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Game() {
       setTurns(0)
   }
 
-  const handleChoice = (card: cardProps) => {
+  const handleChoice = (card: CardProps) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
 

@@ -1,14 +1,17 @@
+import { MouseEvent, FC } from 'react'
 import * as Styles from './styles'
 
-export interface ButtonProps {
+export type ButtonProps = {
   text: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function Button({ text, onClick }: ButtonProps) {
+const Button: FC<ButtonProps> = ({ text, onClick }) => {
   return (
-    <Styles.Button onClick={onClick}>
+    <Styles.Button type="button" onClick={onClick}>
       {text}
     </Styles.Button>
   )
 }
+
+export default Button;

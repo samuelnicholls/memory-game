@@ -1,16 +1,17 @@
+import { FC } from 'react'
 import * as Styles from './styles'
 
-export interface cardProps {
+export type CardProps = {
   id: number
   src: string
   alt?: string
-  handleChoice?: (card: cardProps) => void
+  handleChoice?: (card: CardProps) => void
   matched?: boolean
   isFlipped?: boolean
   disabled?: boolean
 }
 
-export default function Card({ id, src, alt, handleChoice, isFlipped, disabled }: cardProps) {
+const Card: FC<CardProps> = ({ id, src, alt, handleChoice, isFlipped, disabled }) => {
   const cardObject = { src, id }
 
   const handleClick = () => {
@@ -38,3 +39,5 @@ export default function Card({ id, src, alt, handleChoice, isFlipped, disabled }
     </Styles.Card>
   )
 }
+
+export default Card;
