@@ -1,32 +1,26 @@
 import { FC } from 'react'
 import * as Styles from './styles'
+import { CardOption } from '../../types';
 
 export type CardProps = {
-  id: number
-  src: string
-  alt?: string
-  handleChoice?: (card: CardProps) => void
-  matched?: boolean
-  isFlipped?: boolean
-  disabled?: boolean
+  option: CardOption;
+  handleChoice: (card: any) => void
+  isFlipped: boolean
+  disabled: boolean
 }
 
-const Card: FC<CardProps> = ({ id, src, alt, handleChoice, isFlipped, disabled }) => {
-  const cardObject = { src, id }
-
+const Card: FC<CardProps> = ({ option, handleChoice, isFlipped, disabled }) => {
   const handleClick = () => {
     if (disabled) return
-    if (handleChoice) {
-      handleChoice(cardObject)
-    }
+    handleChoice(option)
   }
 
   return (
     <Styles.Card>
       <div>
         <Styles.CardFrontImage 
-          src={src} 
-          alt={alt} 
+          src={option.src} 
+          alt={option.alt} 
           isFlipped={isFlipped} 
         />
         <Styles.CardBackImage 

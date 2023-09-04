@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import * as Styles from './styles'
 import Button from '../Button/index'
-import Card, { CardProps } from '../Card/index'
+import Card from '../Card/index'
+import { CardOption } from '../../types'
 
 const cardImages = [
   { "src": "img/london.jpg", "alt": "London", "matched": false},
@@ -13,10 +14,10 @@ const cardImages = [
 ]
 
 export default function Game() { 
-  const [cards, setCards] = useState<CardProps[]>([])
+  const [cards, setCards] = useState<CardOption[]>([])
   const [turns, setTurns] = useState<number>(0)
-  const [choiceOne, setChoiceOne] = useState<CardProps | null>(null)
-  const [choiceTwo, setChoiceTwo] = useState<CardProps | null>(null)
+  const [choiceOne, setChoiceOne] = useState<CardOption | null>(null)
+  const [choiceTwo, setChoiceTwo] = useState<CardOption | null>(null)
   const [disabled, setDisabled] = useState<boolean>(false)
 
   useEffect(() => {
@@ -47,14 +48,13 @@ export default function Game() {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }))
-
       setChoiceOne(null)
       setChoiceTwo(null)
       setCards(shuffledCards)
       setTurns(0)
   }
 
-  const handleChoice = (card: CardProps) => {
+  const handleChoice = (card: CardOption) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
 
@@ -73,14 +73,12 @@ export default function Game() {
           <Button text='New Game' onClick={shuffleCards} />
         </Styles.GameWrapper>
         <Styles.GameGrid>
-          {cards.map(card => (
-            <Card 
-              key={card.id} 
-              id={card.id}
-              src={card.src} 
-              alt={card.alt}
+          {cards.map(option => (
+            <Card
+              key={option.id}
+              option={option}
               handleChoice={handleChoice}
-              isFlipped={card.id === choiceOne?.id || card.id === choiceTwo?.id || card.matched}
+              isFlipped={option.id === choiceOne?.id || option.id === choiceTwo?.id || option.matched}
               disabled={disabled}
             />
           ))}
